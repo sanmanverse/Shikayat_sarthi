@@ -148,6 +148,8 @@ Create a `.env` file in the prototype root (copy from `.env.example`):
 ## 5. Running the Prototype & Tests
 
 ### Installation
+Use Python 3.12. Netlify reads the version from `runtime.txt` before installing `requirements.txt`. The pinned `pydantic-core` release has a Linux wheel for Python 3.12, so pip does not need to compile it with Rust.
+
 ```bash
 python -m venv venv
 venv\Scripts\activate   # Windows
@@ -159,6 +161,9 @@ pip install -r requirements.txt
 uvicorn app.main:app --port 8000 --reload
 ```
 Access the web portal at [http://localhost:8000](http://localhost:8000).
+
+### Netlify Deployment
+Netlify publishes the static frontend from `app/static`. This configuration does not run the FastAPI server, so features that call `/api` require a separately configured backend.
 
 ### Running Test Suite
 ```bash
