@@ -1,0 +1,140 @@
+{"text": "Boys are teasing girls near the bus stand every evening", "lang": "en", "expected_category_family": "women_safety", "is_sensitive": true}
+{"text": "A small child is working at a tea stall and is being beaten by the owner", "lang": "en", "expected_category_family": "child_safety", "is_sensitive": true}
+{"text": "A live electric wire has fallen on the road and is sparking dangerously", "lang": "en", "expected_category_family": "electrical_hazard", "is_sensitive": true}
+{"text": "Some men with knives are threatening shopkeepers at the market", "lang": "en", "expected_category_family": "public_safety", "is_sensitive": true}
+{"text": "My medical test report was leaked to other patients without my consent", "lang": "en", "expected_category_family": "confidential_medical", "is_sensitive": true}
+{"text": "Women are being harassed by a group of men near the college gate daily", "lang": "en", "expected_category_family": "women_safety", "is_sensitive": true}
+{"text": "A girl was molested on the bus yesterday by co-passengers", "lang": "en", "expected_category_family": "women_safety", "is_sensitive": true}
+{"text": "Child labour spotted at a roadside dhaba near the highway, kids forced to work", "lang": "en", "expected_category_family": "child_safety", "is_sensitive": true}
+{"text": "High tension wire is hanging low and touching vehicles passing below, risk of electrocution", "lang": "en", "expected_category_family": "electrical_hazard", "is_sensitive": true}
+{"text": "A man is extorting protection money from local vendors threatening with rod", "lang": "en", "expected_category_family": "public_safety", "is_sensitive": true}
+{"text": "My pregnancy test result was disclosed by a nurse to my neighbours", "lang": "en", "expected_category_family": "confidential_medical", "is_sensitive": true}
+{"text": "Stalkers are following my daughter from school every day", "lang": "en", "expected_category_family": "women_safety", "is_sensitive": true}
+{"text": "An underage girl is being employed at a local salon", "lang": "en", "expected_category_family": "child_safety", "is_sensitive": true}
+{"text": "Transformer is sparking and smoking near the residential area, looks like it may catch fire", "lang": "en", "expected_category_family": "electrical_hazard", "is_sensitive": true}
+{"text": "Gang threatened to kill a local journalist if he continued reporting", "lang": "en", "expected_category_family": "public_safety", "is_sensitive": true}
+{"text": "Patient HIV status was shared by the hospital staff publicly", "lang": "en", "expected_category_family": "confidential_medical", "is_sensitive": true}
+{"text": "A group of boys are catcalling women at the railway station platform", "lang": "en", "expected_category_family": "women_safety", "is_sensitive": true}
+{"text": "Minor child forced to wash utensils at a hotel kitchen", "lang": "en", "expected_category_family": "child_safety", "is_sensitive": true}
+{"text": "Bare live cable exposed after road digging works, no barrier placed around it", "lang": "en", "expected_category_family": "electrical_hazard", "is_sensitive": true}
+{"text": "Armed goons demanding hafta from auto rickshaw drivers near the stand", "lang": "en", "expected_category_family": "public_safety", "is_sensitive": true}
+{"text": "Women employees sexually harassed by supervisor in a government office", "lang": "en", "expected_category_family": "women_safety", "is_sensitive": true}
+{"text": "A ten year old is being made to sell balloons on the highway instead of going to school", "lang": "en", "expected_category_family": "child_safety", "is_sensitive": true}
+{"text": "Fallen electric pole blocking road and wires touching the wet ground, urgent electrical hazard", "lang": "en", "expected_category_family": "electrical_hazard", "is_sensitive": true}
+{"text": "Persons with weapons threatening local merchants to pay up or face consequences", "lang": "en", "expected_category_family": "public_safety", "is_sensitive": true}
+{"text": "My confidential medical records were given to insurance company without permission", "lang": "en", "expected_category_family": "confidential_medical", "is_sensitive": true}
+{"text": "मुलींची छेड काढली जात आहे बस स्टॉपवर", "lang": "mr", "expected_category_family": "women_safety", "is_sensitive": true}
+{"text": "लहान मुलाला मारहाण करत दुकानात काम करवून घेत आहेत", "lang": "mr", "expected_category_family": "child_safety", "is_sensitive": true}
+{"text": "उघडी तार लटकत आहे करंट लागू शकतो", "lang": "mr", "expected_category_family": "electrical_hazard", "is_sensitive": true}
+{"text": "गुंड खंडणी मागत आहेत दुकानदारांकडून", "lang": "mr", "expected_category_family": "public_safety", "is_sensitive": true}
+{"text": "लाचखोरी चालू आहे ऑफिसमध्ये पैसे मागतात", "lang": "mr", "expected_category_family": "bribery", "is_sensitive": false}
+{"text": "लड़कियों को छेड़ते हैं कॉलेज के बाहर रोज", "lang": "hi", "expected_category_family": "women_safety", "is_sensitive": true}
+{"text": "छोटे बच्चे से काम करवा रहे हैं चाय की दुकान पर", "lang": "hi", "expected_category_family": "child_safety", "is_sensitive": true}
+{"text": "नंगी तार सड़क पर गिरी हुई है करंट लगने का खतरा", "lang": "hi", "expected_category_family": "electrical_hazard", "is_sensitive": true}
+{"text": "रिश्वत मांग रहे हैं अधिकारी काम के लिए", "lang": "hi", "expected_category_family": "bribery", "is_sensitive": false}
+{"text": "गुंडे हथियार लेकर धमकी दे रहे हैं दुकानदारों को", "lang": "hi", "expected_category_family": "public_safety", "is_sensitive": true}
+{"text": "An officer demanded one thousand rupees bribe to register my complaint", "lang": "en", "expected_category_family": "bribery", "is_sensitive": false}
+{"text": "बाल मजदूरी हो रही है होटल में, बच्चों से काम करवाया जा रहा है", "lang": "hi", "expected_category_family": "child_safety", "is_sensitive": true}
+{"text": "Acid attack threat given to a woman in Nanded city area", "lang": "en", "expected_category_family": "women_safety", "is_sensitive": true}
+{"text": "Forced marriage of a minor girl being arranged in our colony", "lang": "en", "expected_category_family": "women_safety", "is_sensitive": true}
+{"text": "Child trafficking suspected near the railway station", "lang": "en", "expected_category_family": "child_safety", "is_sensitive": true}
+{"text": "I am killing time at the park while waiting for the office to open", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "A gang of workers is repairing the road outside my house making noise", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "I need a STD 10 certificate from the municipal office", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "It was a riot of colours at the Holi celebration in our ward", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "The sword fern plants near the entrance need trimming", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "Gang of volunteers planted 200 trees in our area during green drive", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "STD 12 mark sheet copy required for college admission", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "Killing time at the bus stop since the bus is very late today", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "The assault course at our school sports ground needs repair", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "Violence of colors during Diwali fireworks was beautiful but caused noise pollution", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "Gun salute ceremony at the parade ground disturbed area residents", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "Riot of butterflies in the garden — requesting garden maintenance", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "Gang of kids playing cricket on the road causing traffic, need a playground", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "STD rate chart at the government telecom booth is outdated", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "Assault drill practice at army grounds every morning wakes residents at 5 AM", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "The electricity bill violence — rates are way too high this month", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "Kill switch on the new LED streetlight broke, light stays on 24 hours", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "Sword dance performance disrupted by rain, need covered venue for cultural programs", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "Stalk of bananas from the government scheme not received this month", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "Gropers I mean groove covers on the speed bump are broken, need replacement", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "Molehill created by digging activities near the water pipeline is not levelled", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "There is a pothole on the main road near Vazirabad circle causing accidents", "lang": "en", "expected_category_family": "roads", "is_sensitive": false}
+{"text": "Water supply has been irregular for the past three days in our ward", "lang": "en", "expected_category_family": "water_supply", "is_sensitive": false}
+{"text": "Garbage not collected from our street for more than a week", "lang": "en", "expected_category_family": "sanitation", "is_sensitive": false}
+{"text": "Drainage is blocked and causing waterlogging in front of my house", "lang": "en", "expected_category_family": "drainage", "is_sensitive": false}
+{"text": "Streetlight near the school has not been working for two weeks", "lang": "en", "expected_category_family": "street_lighting", "is_sensitive": false}
+{"text": "Ration shop owner is not giving proper quantity of rice and wheat", "lang": "en", "expected_category_family": "ration", "is_sensitive": false}
+{"text": "Bus service to Kinwat taluka has been cancelled without any notice", "lang": "en", "expected_category_family": "transport", "is_sensitive": false}
+{"text": "Stray dog menace near the market area, please take action", "lang": "en", "expected_category_family": "public_health", "is_sensitive": false}
+{"text": "Birth certificate has not been issued even after two months of application", "lang": "en", "expected_category_family": "certificates", "is_sensitive": false}
+{"text": "Water pipe burst on the main road, water is being wasted since yesterday morning", "lang": "en", "expected_category_family": "water_supply", "is_sensitive": false}
+{"text": "Municipal school building roof is leaking, students cannot study in the rain", "lang": "en", "expected_category_family": "education", "is_sensitive": false}
+{"text": "Dilapidated bridge in our village needs immediate repair before monsoon", "lang": "en", "expected_category_family": "roads", "is_sensitive": false}
+{"text": "Pension amount not received for the past two months", "lang": "en", "expected_category_family": "social_welfare", "is_sensitive": false}
+{"text": "Public toilet near the bus stop is locked and in very bad condition", "lang": "en", "expected_category_family": "sanitation", "is_sensitive": false}
+{"text": "रस्त्यात मोठा खड्डा आहे वाहने अडकतात", "lang": "mr", "expected_category_family": "roads", "is_sensitive": false}
+{"text": "पाणी पुरवठा नाही तीन दिवसांपासून", "lang": "mr", "expected_category_family": "water_supply", "is_sensitive": false}
+{"text": "कचरा उचलला नाही आठवडाभरापासून", "lang": "mr", "expected_category_family": "sanitation", "is_sensitive": false}
+{"text": "गटार तुंबले आहे पाणी भरले आहे घरासमोर", "lang": "mr", "expected_category_family": "drainage", "is_sensitive": false}
+{"text": "शाळेसमोर दिवाबत्ती बंद आहे दोन आठवड्यांपासून", "lang": "mr", "expected_category_family": "street_lighting", "is_sensitive": false}
+{"text": "रेशन दुकानातून योग्य धान्य मिळत नाही", "lang": "mr", "expected_category_family": "ration", "is_sensitive": false}
+{"text": "एसटी बसची वेळ नियमित नाही", "lang": "mr", "expected_category_family": "transport", "is_sensitive": false}
+{"text": "भटकी कुत्री बाजारात त्रास देत आहेत", "lang": "mr", "expected_category_family": "public_health", "is_sensitive": false}
+{"text": "जन्म प्रमाणपत्र दोन महिने झाले मिळाले नाही", "lang": "mr", "expected_category_family": "certificates", "is_sensitive": false}
+{"text": "पाणी पाइप फुटला रस्त्यावर पाणी वाहत आहे", "lang": "mr", "expected_category_family": "water_supply", "is_sensitive": false}
+{"text": "सड़क पर गहरे गड्ढे हैं दुर्घटना हो सकती है", "lang": "hi", "expected_category_family": "roads", "is_sensitive": false}
+{"text": "पानी की सप्लाई तीन दिन से बंद है", "lang": "hi", "expected_category_family": "water_supply", "is_sensitive": false}
+{"text": "कचरा नहीं उठाया गया हफ्तेभर से", "lang": "hi", "expected_category_family": "sanitation", "is_sensitive": false}
+{"text": "नाला बंद है पानी भर गया है घर के सामने", "lang": "hi", "expected_category_family": "drainage", "is_sensitive": false}
+{"text": "स्कूल के पास स्ट्रीट लाइट काम नहीं कर रही दो हफ्ते से", "lang": "hi", "expected_category_family": "street_lighting", "is_sensitive": false}
+{"text": "राशन की दुकान पर सही मात्रा नहीं मिल रही", "lang": "hi", "expected_category_family": "ration", "is_sensitive": false}
+{"text": "बस सेवा बंद है बिना सूचना के", "lang": "hi", "expected_category_family": "transport", "is_sensitive": false}
+{"text": "बाजार में आवारा कुत्तों का उपद्रव है", "lang": "hi", "expected_category_family": "public_health", "is_sensitive": false}
+{"text": "जन्म प्रमाण पत्र दो महीने में भी नहीं मिला", "lang": "hi", "expected_category_family": "certificates", "is_sensitive": false}
+{"text": "पानी का पाइप फट गया सड़क पर पानी बह रहा है", "lang": "hi", "expected_category_family": "water_supply", "is_sensitive": false}
+{"text": "School building is damaged and rains are entering classrooms affecting 300 students", "lang": "en", "expected_category_family": "education", "is_sensitive": false}
+{"text": "Public park benches are broken and lights are not working, unsafe at night", "lang": "en", "expected_category_family": "public_amenities", "is_sensitive": false}
+{"text": "PHC lacks medicines and doctor is absent three times a week", "lang": "en", "expected_category_family": "health", "is_sensitive": false}
+{"text": "Electricity bill wrongly calculated, excess amount charged this month", "lang": "en", "expected_category_family": "electricity_billing", "is_sensitive": false}
+{"text": "No dustbin provided in our ward despite repeated requests to municipal council", "lang": "en", "expected_category_family": "sanitation", "is_sensitive": false}
+{"text": "MNREGA wages not paid for three months despite completing work", "lang": "en", "expected_category_family": "social_welfare", "is_sensitive": false}
+{"text": "Illegal construction blocking road and footpath in residential area", "lang": "en", "expected_category_family": "roads", "is_sensitive": false}
+{"text": "Water tanker not reaching remote village despite being on the schedule", "lang": "en", "expected_category_family": "water_supply", "is_sensitive": false}
+{"text": "Trees fallen on the road after the storm, road is blocked for two days", "lang": "en", "expected_category_family": "roads", "is_sensitive": false}
+{"text": "Open manhole in the middle of the road is a danger to two-wheelers", "lang": "en", "expected_category_family": "roads", "is_sensitive": false}
+{"text": "Pension not released for widow for four months", "lang": "en", "expected_category_family": "social_welfare", "is_sensitive": false}
+{"text": "Anganwadi centre closed for a month, children missing nutrition scheme", "lang": "en", "expected_category_family": "social_welfare", "is_sensitive": false}
+{"text": "River bank erosion threatening houses near Nanded riverside area", "lang": "en", "expected_category_family": "disaster_management", "is_sensitive": false}
+{"text": "Public library books damaged due to leaking roof, library shut down", "lang": "en", "expected_category_family": "education", "is_sensitive": false}
+{"text": "Municipal market stalls in dilapidated condition, vendors facing problems", "lang": "en", "expected_category_family": "public_amenities", "is_sensitive": false}
+{"text": "New road constructed but no road markings or speed breakers installed", "lang": "en", "expected_category_family": "roads", "is_sensitive": false}
+{"text": "Electricity transformer humming loudly and sparking — electrical issue not safety emergency", "lang": "en", "expected_category_family": "electricity_billing", "is_sensitive": false}
+{"text": "Water meter reading is incorrect this month, bill is 10x the normal amount", "lang": "en", "expected_category_family": "water_supply", "is_sensitive": false}
+{"text": "A woman was stalked and threatened while returning from night shift", "lang": "en", "expected_category_family": "women_safety", "is_sensitive": true}
+{"text": "Two minor girls being forced into child marriage in our village", "lang": "en", "expected_category_family": "women_safety", "is_sensitive": true}
+{"text": "Live wire broke and fell near anganwadi center, kids at severe shock risk", "lang": "en", "expected_category_family": "electrical_hazard", "is_sensitive": true}
+{"text": "Extortionists entered local grocery shop and pointed knife demanding hafta", "lang": "en", "expected_category_family": "public_safety", "is_sensitive": true}
+{"text": "Doctor leaked confidential patient abortion history to public relations staff", "lang": "en", "expected_category_family": "confidential_medical", "is_sensitive": true}
+{"text": "कॉलेजजवळ मुलींची छेड काढणारे टोळके उभे असते", "lang": "mr", "expected_category_family": "women_safety", "is_sensitive": true}
+{"text": "धाब्यावर लहान मुलाकडून भांडी घासून घेतली जात आहेत व मारहाण होते", "lang": "mr", "expected_category_family": "child_safety", "is_sensitive": true}
+{"text": "रस्त्यावर तुटलेली वीज तार पडली आहे, ठिणग्या उडत आहेत", "lang": "mr", "expected_category_family": "electrical_hazard", "is_sensitive": true}
+{"text": "स्कूल की लड़कियों से छेड़छाड़ की जा रही है बस स्टॉप के पास", "lang": "hi", "expected_category_family": "women_safety", "is_sensitive": true}
+{"text": "कारखाने में छोटे बच्चों से बाल श्रम कराया जा रहा है", "lang": "hi", "expected_category_family": "child_safety", "is_sensitive": true}
+{"text": "सड़क पर नंगी तार गिरी हुई है जिससे चिंगारी निकल रही है", "lang": "hi", "expected_category_family": "electrical_hazard", "is_sensitive": true}
+{"text": "बाजार में गुंडे चाकू दिखाकर व्यापारियों से हफ्ता वसूली कर रहे हैं", "lang": "hi", "expected_category_family": "public_safety", "is_sensitive": true}
+{"text": "The riot of blooming flowers in the botanical garden needs proper pathways", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "My son needs his STD 10 migration certificate urgently", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "A gang of painters is repainting the government hospital boundary wall", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "Killing time at the passport office because the token system stopped working", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "The decorative sword plant in the district collectorate garden is drying up", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "Requesting permit for traditional sword dance during district festival", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "A gang of road maintenance staff left gravel heaps on the turn", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "STD telephone booth near post office has broken coin slot", "lang": "en", "expected_category_family": "routine", "is_sensitive": false}
+{"text": "Potholes on Degloor road repaired poorly with loose soil", "lang": "en", "expected_category_family": "roads", "is_sensitive": false}
+{"text": "Drinking water pipeline leakage in Mudkhed market area", "lang": "en", "expected_category_family": "water_supply", "is_sensitive": false}
+{"text": "Streetlight timer in Bhokar town is not set properly, turns on at noon", "lang": "en", "expected_category_family": "street_lighting", "is_sensitive": false}
+{"text": "Waste bin in front of Kandhar civil hospital is overflowing", "lang": "en", "expected_category_family": "sanitation", "is_sensitive": false}
+{"text": "मुखेड भागात पाण्याची पाईपलाईन फुटल्याने पाणी वाया जात आहे", "lang": "mr", "expected_category_family": "water_supply", "is_sensitive": false}
+{"text": "नांदेड बसस्थानकाजवळ कचऱ्याचे ढीग साचले आहेत", "lang": "mr", "expected_category_family": "sanitation", "is_sensitive": false}
+{"text": "भोकर तालुक्यात रस्त्यावरील खड्ड्यांमुळे वाहतूक कोंडी होत आहे", "lang": "mr", "expected_category_family": "roads", "is_sensitive": false}
