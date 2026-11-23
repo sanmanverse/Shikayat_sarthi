@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HackFusion 4.0 - Agentic Grievance Redressal System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      --gov-blue: #0d47a1;
+      --gov-light: #f4f6f9;
+      --gov-accent: #ff6f00;
+      --gov-card: #ffffff;
+    }
+    body { background-color: var(--gov-light); font-family: system-ui, -apple-system, sans-serif; }
+    .navbar { background-color: var(--gov-blue); }
+    .badge-sensitive { background-color: #d32f2f; color: white; }
+    .badge-auto { background-color: #2e7d32; color: white; }
+    .badge-review { background-color: #ed6c02; color: white; }
+    .chat-container { height: 420px; overflow-y: auto; background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 15px; }
+    .msg-bubble { max-width: 80%; padding: 10px 14px; border-radius: 12px; margin-bottom: 10px; font-size: 0.95rem; }
+    .msg-user { background: #e3f2fd; color: #0d47a1; margin-left: auto; text-align: right; }
+    .msg-bot { background: #f1f3f5; color: #212529; margin-right: auto; }
+    .card-shadow { box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: none; border-radius: 10px; }
+    .nav-tabs .nav-link.active { font-weight: 600; color: var(--gov-blue); border-bottom: 3px solid var(--gov-blue); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar navbar-dark shadow-sm py-2">
+    <div class="container-fluid px-4">
+      <span class="navbar-brand mb-0 h1 d-flex align-items-center">
+        <i class="bi bi-shield-check me-2 fs-4"></i>
+        <span>Nanded District Grievance AI <small class="text-warning fs-6 ms-2">(HackFusion 4.0 Prototype)</small></span>
+      </span>
+      <div class="d-flex align-items-center text-light">
+        <span class="badge bg-success me-3"><i class="bi bi-cpu me-1"></i> Multi-Agent RAG Active</span>
+        <span class="badge bg-secondary"><i class="bi bi-eye me-1"></i> Langfuse Traced</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container-fluid px-4 my-4">
+    <ul class="nav nav-tabs mb-4" id="portalTabs" role="tablist">
+      <li class="nav-item">
+        <button class="nav-link active" id="citizen-tab" data-bs-toggle="tab" data-bs-target="#citizen-pane" type="button">
+          <i class="bi bi-chat-dots me-1"></i> Citizen Intake Portal
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" id="officer-tab" data-bs-toggle="tab" data-bs-target="#officer-pane" type="button" onclick="loadOfficerQueue()">
+          <i class="bi bi-inbox me-1"></i> Nodal Officer Console
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" id="admin-tab" data-bs-toggle="tab" data-bs-target="#admin-pane" type="button" onclick="loadAdminDashboard()">
+          <i class="bi bi-graph-up-arrow me-1"></i> Supervisor Insights & Duplicate Clusters
+        </button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="portalTabsContent">
+
+      <!-- ================= 1. CITIZEN PORTAL ================= -->
+      <div class="tab-pane fade show active" id="citizen-pane" role="tabpanel">
+        <div class="row g-4">
+          <!-- Chat Section -->
+          <div class="col-lg-7">
+            <div class="card card-shadow p-3">
+              <div class="d-flex justify-content-between align-items-center pb-2 mb-2 border-bottom">
+                <h6 class="mb-0 fw-bold"><i class="bi bi-robot text-primary me-2"></i>AI Grievance Assistant (मराठी / हिंदी / English)</h6>
+                <div class="btn-group btn-group-sm">
+                  <button class="btn btn-outline-primary active" id="btn-lang-en" onclick="setLang('English')">English</button>
+                  <button class="btn btn-outline-primary" id="btn-lang-mr" onclick="setLang('Marathi')">मराठी</button>
+                  <button class="btn btn-outline-primary" id="btn-lang-hi" onclick="setLang('Hindi')">हिंदी</button>
+                </div>
+              </div>
+
+              <!-- Quick Scenario Demo Pills -->
+              <div class="mb-2 d-flex flex-wrap gap-1">
+                <span class="badge bg-light text-dark border align-self-center">Test Scenarios:</span>
+                <button type="button" class="btn btn-xs btn-outline-success py-0 px-2" style="font-size: 0.75rem;" onclick="sendTurn('नांदेड मधील वजिराबाद मुख्य रस्त्यावर मोठे खड्डे पडले आहेत.')">
+                  🛣️ Potholes (MR - C001)
+                </button>
+                <button type="button" class="btn btn-xs btn-outline-success py-0 px-2" style="font-size: 0.75rem;" onclick="sendTurn('सिडको इलाके में बिजली के खंभे की स्ट्रीट लाइट कई दिनों से बंद है.')">
+                  💡 Streetlight (HI - C009)
+                </button>
+                <button type="button" class="btn btn-xs btn-outline-danger py-0 px-2" style="font-size: 0.75rem;" onclick="sendTurn('Boys tease the girls near the bus stand every evening in Degloor.')">
+                  🛡️ Women Safety (EN - C017)
+                </button>
+                <button type="button" class="btn btn-xs btn-outline-danger py-0 px-2" style="font-size: 0.75rem;" onclick="sendTurn('चाय की दुकान पर छोटे बच्चे से काम करवाया जा रहा है और मालिक उसे पीट रहा है.')">
+                  👶 Child Safety (HI - C018)
+                </button>
+                <button type="button" class="btn btn-xs btn-outline-danger py-0 px-2" style="font-size: 0.75rem;" onclick="sendTurn('रस्त्यावर विजेची उघडी तार लटकत असून स्पार्किंग होत आहे, शॉक बसण्याची शक्यता आहे.')">
+                  ⚡ Exposed Wire (MR - C010)
+                </button>
+                <button type="button" class="btn btn-xs btn-outline-danger py-0 px-2" style="font-size: 0.75rem;" onclick="sendTurn('Armed goons with knife are threatening shopkeepers in central market.')">
+                  ⚠️ Threat / Weapons (EN - C026)
+                </button>
+              </div>
+
+              <!-- Chat window -->
+              <div class="chat-container mb-3" id="chatArea">
+                <div class="msg-bubble msg-bot">
+                  <strong>Grievance Desk:</strong> Welcome to the Nanded District Redressal System. You can submit your grievance in English, Marathi, or Hindi. Describe what happened and where.
+                </div>
+              </div>
+
+              <!-- Input Area -->
+              <div class="input-group">
+                <input type="text" id="citizenInput" class="form-control" placeholder="Type your complaint here (e.g. Streetlights not working in Vazirabad)..." onkeypress="if(event.key==='Enter') sendTurn()">
+                <button class="btn btn-outline-secondary" type="button" onclick="triggerVoiceDemo()" title="Voice Intake Demo (Sarvam Saaras STT)">
+                  <i class="bi bi-mic-fill text-danger"></i> Voice
+                </button>
+                <button class="btn btn-primary" type="button" onclick="sendTurn()">
+                  <i class="bi bi-send-fill"></i> Send
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Structured Draft & Tracking Section -->
+          <div class="col-lg-5">
+            <!-- Draft Confirmation Card -->
+            <div class="card card-shadow p-3 mb-3 border-start border-4 border-primary" id="draftCard" style="display:none;">
+              <h6 class="fw-bold text-primary mb-2"><i class="bi bi-file-earmark-check me-2"></i>Structured Complaint Draft</h6>
+              <div class="small mb-1"><strong>Issue:</strong> <span id="draftDesc">-</span></div>
+              <div class="small mb-1"><strong>Suggested Category:</strong> <span id="draftCat" class="badge bg-secondary">-</span></div>
+              <div class="small mb-1"><strong>Location:</strong> <span id="draftLoc">-</span></div>
+              <div class="small mb-2"><strong>Urgency:</strong> <span id="draftUrg" class="badge bg-warning text-dark">-</span></div>
+              <div class="d-grid mt-3">
+                <button class="btn btn-success fw-bold" onclick="confirmDraft()">
+                  <i class="bi bi-check2-circle me-1"></i> Confirm & Register Grievance
+                </button>
+              </div>
+            </div>
+
+            <!-- Active Ticket Tracker -->
+            <div class="card card-shadow p-3" id="trackerCard">
+              <h6 class="fw-bold mb-3"><i class="bi bi-search me-2"></i>Track Complaint Status</h6>
+              <div class="input-group input-group-sm mb-3">
+                <input type="text" id="trackRefInput" class="form-control" placeholder="Enter Ref # (e.g. GRV-2026-...)">
+                <button class="btn btn-dark" onclick="trackGrievance()"><i class="bi bi-arrow-right"></i> Track</button>
+              </div>
+              <div id="trackerResults" class="small text-muted">
+                Submit a complaint above or enter an existing reference number to view evidence and real-time status.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 2. OFFICER CONSOLE ================= -->
+      <div class="tab-pane fade" id="officer-pane" role="tabpanel">
+        <div class="row g-4">
+          <!-- Queue List -->
+          <div class="col-lg-5">
+            <div class="card card-shadow p-3">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold mb-0"><i class="bi bi-list-task me-2"></i>Officer Grievance Queue</h6>
+                <button class="btn btn-sm btn-outline-secondary" onclick="loadOfficerQueue()"><i class="bi bi-arrow-clockwise"></i> Refresh</button>
+              </div>
+              <div class="list-group list-group-flush overflow-auto" id="queueList" style="max-height: 520px;">
+                <div class="text-center py-4 text-muted">Loading grievances...</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Per-Grievance Decision & Precedents Panel -->
+          <div class="col-lg-7">
+            <div class="card card-shadow p-3" id="detailPanel">
+              <div class="text-center py-5 text-muted">
+                <i class="bi bi-hand-index-thumb fs-1 d-block mb-2"></i>
+                Select a grievance from the queue to view its AI summary, policy-gate evidence, and precedents.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 3. SUPERVISOR / ADMIN CONSOLE ================= -->
+      <div class="tab-pane fade" id="admin-pane" role="tabpanel">
+        <div class="row g-4">
+          <!-- SLA Alerts -->
+          <div class="col-lg-6">
+            <div class="card card-shadow p-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h6 class="fw-bold text-danger mb-0"><i class="bi bi-exclamation-triangle-fill me-2"></i>Pre-emptive SLA Breach Alerts</h6>
+                <button class="btn btn-sm btn-outline-danger" onclick="scanSLA()"><i class="bi bi-radar"></i> Run SLA Scan</button>
+              </div>
+              <p class="small text-muted mb-2">Predicts SLA breach risk <em>before</em> deadline based on historical turnaround and backlog load.</p>
+              <div id="slaAlertsContainer" class="list-group list-group-flush overflow-auto" style="max-height: 250px;">
+                <div class="text-muted small py-2">Loading alerts...</div>
+              </div>
+            </div>
+
+            <!-- Duplicate Incident Clusters -->
+            <div class="card card-shadow p-3 mt-4">
+              <h6 class="fw-bold text-primary mb-2"><i class="bi bi-collection-fill me-2"></i>Duplicate Grouping (Suggested Clusters)</h6>
+              <p class="small text-muted mb-2">Grouped by taluka, locality and similarity. <strong>Zero silent merges:</strong> every citizen keeps their own ticket number.</p>
+              <div id="incidentsContainer" class="overflow-auto" style="max-height: 250px;">
+                <div class="text-muted small py-2">Loading clusters...</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Department Bottlenecks & Recurrence Hotspots -->
+          <div class="col-lg-6">
+            <div class="card card-shadow p-3">
+              <h6 class="fw-bold mb-2"><i class="bi bi-bar-chart-steps me-2"></i>Department Bottlenecks & Chronic Recurrence Hotspots</h6>
+              <div class="table-responsive" style="max-height: 250px; overflow-y: auto;">
+                <table class="table table-sm table-hover align-middle small mb-0">
+                  <thead class="table-light">
+                    <tr><th>Department</th><th>Backlog</th><th>SLA Alerts</th><th>Status</th></tr>
+                  </thead>
+                  <tbody id="bottlenecksBody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Audit Trail -->
+            <div class="card card-shadow p-3 mt-4">
+              <h6 class="fw-bold mb-2"><i class="bi bi-journal-text me-2"></i>Public Trace & Action Audit Log</h6>
+              <div class="table-responsive" style="max-height: 250px; overflow-y: auto;">
+                <table class="table table-sm table-hover align-middle small mb-0">
+                  <thead class="table-light">
+                    <tr><th>Time</th><th>Actor</th><th>Action</th><th>Record</th><th>Summary</th></tr>
+                  </thead>
+                  <tbody id="auditBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let currentLang = 'English';
+    let conversationHistory = [];
+    let activeDraft = null;
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.querySelectorAll('#citizen-pane .btn-group button').forEach(b => b.classList.remove('active'));
+      if(lang === 'English') document.getElementById('btn-lang-en').classList.add('active');
+      if(lang === 'Marathi') document.getElementById('btn-lang-mr').classList.add('active');
+      if(lang === 'Hindi') document.getElementById('btn-lang-hi').classList.add('active');
+    }
+
+    async function sendTurn(customText = null) {
+      const input = document.getElementById('citizenInput');
+      const text = customText || input.value.trim();
+      if (!text) return;
+      input.value = '';
+
+      // Append user message
+      appendChat('user', text);
+
+      try {
+        const res = await fetch('/api/intake/chat', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            conversation_history: conversationHistory,
+            message: text,
+            citizen_id: 'citizen_demo_user'
+          })
+        });
+        const data = await res.json();
+        
+        appendChat('bot', data.assistant_reply);
+        conversationHistory.push({role: 'user', content: text});
+        conversationHistory.push({role: 'assistant', content: data.assistant_reply});
+
+        if (data.draft && data.draft.is_ready_for_confirmation) {
+          activeDraft = data.draft;
+          document.getElementById('draftDesc').innerText = activeDraft.description;
+          document.getElementById('draftCat').innerText = activeDraft.category_name || activeDraft.category_id || 'CAT_01';
+          document.getElementById('draftLoc').innerText = `${activeDraft.locality || ''}, ${activeDraft.taluka || ''}`;
+          document.getElementById('draftUrg').innerText = activeDraft.urgency || 'MEDIUM';
+          document.getElementById('draftCard').style.display = 'block';
+        }
+      } catch (e) {
+        appendChat('bot', 'Error communicating with assistant. Please try again.');
+      }
+    }
+
+    function triggerVoiceDemo() {
+      // Demonstrates voice speech-to-text in Marathi
+      appendChat('bot', '<em>[Voice Input Received from Microphone: Transcribing with Sarvam Saaras STT...]</em>');
+      sendTurn("नांदेड मधील वजिराबाद रस्त्यावर पथदिवे बंद आहेत. कृपया त्वरित चालू करा.");
+    }
+
+    function appendChat(role, text) {
+      const area = document.getElementById('chatArea');
+      const div = document.createElement('div');
+      div.className = `msg-bubble msg-${role}`;
+      div.innerHTML = role === 'user' ? `<strong>You:</strong> ${text}` : `<strong>Assistant:</strong> ${text}`;
+      area.appendChild(div);
+      area.scrollTop = area.scrollHeight;
+    }
+
+    async function confirmDraft() {
+      if (!activeDraft) return;
+      document.getElementById('draftCard').style.display = 'none';
+
+      try {
+        const res = await fetch('/api/intake/confirm', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            draft: activeDraft,
+            citizen_id: 'citizen_demo_user'
+          })
+        });
+        const data = await res.json();
+        const ref = data.reference_no;
+        appendChat('bot', `<strong>Registration Successful!</strong><br>Your complaint reference number is <code>${ref}</code>.<br>Policy Verdict: <strong>${data.decision.verdict}</strong> (${data.decision.rule_id}).`);
+        document.getElementById('trackRefInput').value = ref;
+        trackGrievance();
+      } catch (e) {
+        alert('Failed to register complaint.');
+      }
+    }
+
+    async function trackGrievance() {
+      const ref = document.getElementById('trackRefInput').value.trim();
+      if (!ref) return;
+      const res = await fetch(`/api/grievances/${ref}`);
+      if (!res.ok) {
+        document.getElementById('trackerResults').innerHTML = `<div class="text-danger">Grievance ${ref} not found.</div>`;
+        return;
+      }
+      const data = await res.json();
+      const g = data.grievance;
+      const c = data.category;
+
+      let disputeHtml = '';
+      if (g.status === 'RESOLVED') {
+        disputeHtml = `
+          <div class="alert alert-info py-2 mt-2">
+            <strong>Was your issue resolved?</strong>
+            <button class="btn btn-sm btn-success ms-2" onclick="confirmResolution('${ref}')">Yes, Confirm</button>
+            <button class="btn btn-sm btn-outline-danger ms-1" onclick="disputeCase('${ref}')">No, Dispute</button>
+          </div>
+        `;
+      }
+
+      document.getElementById('trackerResults').innerHTML = `
+        <div class="p-2 border rounded bg-white">
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <strong>${g.reference_no}</strong>
+            <span class="badge ${g.policy_verdict === 'SENSITIVE_HOLD' ? 'badge-sensitive' : 'badge-auto'}">${g.status}</span>
+          </div>
+          <div><strong>Category:</strong> ${c.subcategory || 'General'}</div>
+          <div><strong>Location:</strong> ${g.locality}, ${g.taluka}</div>
+          <div><strong>Assignee:</strong> ${g.assigned_to || 'Nodal Desk'}</div>
+          <div><strong>Policy Verdict:</strong> <span class="badge bg-dark">${g.policy_verdict}</span></div>
+          ${disputeHtml}
+        </div>
+      `;
+    }
+
+    async function disputeCase(ref) {
+      const reason = prompt("Please enter the reason for disputing this resolution:");
+      if (!reason) return;
+      await fetch(`/api/grievances/${ref}/dispute`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({dispute_reason: reason})
+      });
+      alert(`Case ${ref} has been automatically reopened and escalated to senior supervision.`);
+      trackGrievance();
+    }
+
+    async function confirmResolution(ref) {
+      await fetch(`/api/grievances/${ref}/confirm-resolution`, {method: 'POST'});
+      alert('Thank you for your feedback! Case marked satisfied.');
+      trackGrievance();
+    }
+
+    // --- Officer Queue ---
+    async function loadOfficerQueue() {
+      const res = await fetch('/api/grievances');
+      const list = await res.json();
+      const cont = document.getElementById('queueList');
+      cont.innerHTML = '';
+      if (list.length === 0) {
+        cont.innerHTML = '<div class="text-center py-4 text-muted">No grievances submitted yet.</div>';
+        return;
+      }
+      list.forEach(g => {
+        const item = document.createElement('a');
+        item.href = 'javascript:void(0)';
+        item.className = 'list-group-item list-group-item-action py-2';
+        item.onclick = () => showOfficerDetail(g.reference_no);
+        const vBadge = g.policy_verdict === 'SENSITIVE_HOLD' ? 'badge-sensitive' : (g.policy_verdict === 'AUTO_HANDLE' ? 'badge-auto' : 'badge-review');
+        item.innerHTML = `
+          <div class="d-flex justify-content-between align-items-center">
+            <strong>${g.reference_no}</strong>
+            <span class="badge ${vBadge}">${g.policy_verdict || g.status}</span>
+          </div>
+          <div class="small text-truncate text-muted">${g.raw_text}</div>
+          <div class="small d-flex justify-content-between text-secondary mt-1">
+            <span><i class="bi bi-geo-alt"></i> ${g.locality}, ${g.taluka}</span>
+            <span>${g.citizen_id}</span>
+          </div>
+        `;
+        cont.appendChild(item);
+      });
+    }
+
+    async function showOfficerDetail(ref) {
+      const res = await fetch(`/api/grievances/${ref}`);
+      const data = await res.json();
+      const g = data.grievance;
+      const c = data.category;
+      const p = document.getElementById('detailPanel');
+
+      p.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+          <h5 class="mb-0 fw-bold">${g.reference_no}</h5>
+          <div>
+            <span class="badge ${g.policy_verdict === 'SENSITIVE_HOLD' ? 'badge-sensitive' : 'badge-auto'} me-1">${g.policy_verdict}</span>
+            <span class="badge bg-secondary">${g.status}</span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="fw-bold small text-muted">CITIZEN COMPLAINT</div>
+          <div class="p-2 bg-light rounded">${g.raw_text}</div>
+          <div class="small text-muted mt-1">Taluka: <strong>${g.taluka}</strong> | Locality: <strong>${g.locality}</strong> | Complainant: <code>${g.citizen_id}</code></div>
+        </div>
+
+        <div class="row g-2 mb-3">
+          <div class="col-md-6">
+            <div class="border rounded p-2 small">
+              <div class="text-muted fw-bold">POLICY GATE RULE</div>
+              <div>Rule: <code>${g.policy_rule || 'N/A'}</code></div>
+              <div>Auto-handling Allowed: <strong>${c.auto_resolution_allowed ? 'Yes' : 'No'}</strong></div>
+              <div>Sensitive: <strong>${c.sensitive ? 'YES (Lock Active)' : 'No'}</strong></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="border rounded p-2 small">
+              <div class="text-muted fw-bold">AI CONFIDENCE & SLA</div>
+              <div>Fused Confidence: <strong>${(g.confidence * 100).toFixed(0)}%</strong></div>
+              <div>SLA: <strong>${c.sla_days} days</strong> (Due: ${g.due_date ? g.due_date.substring(0,10) : 'N/A'})</div>
+              <div>Assigned: <strong>${g.assigned_to || 'Nodal Officer'}</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-top pt-2 mt-2">
+          <div class="fw-bold small mb-2 text-primary"><i class="bi bi-clock-history me-1"></i>Precedent Evidence & Work Orders</div>
+          <div class="small text-muted">Work Orders: ${data.work_orders.length} dispatched | Status updates: ${data.status_history.length}</div>
+          <div class="d-flex gap-2 mt-3">
+            <button class="btn btn-sm btn-success" onclick="updateStatus('${g.reference_no}', 'RESOLVED')"><i class="bi bi-check-lg"></i> Mark Resolved</button>
+            <button class="btn btn-sm btn-outline-danger" onclick="updateStatus('${g.reference_no}', 'ESCALATED')"><i class="bi bi-arrow-up-circle"></i> Escalate to Collector</button>
+          </div>
+        </div>
+      `;
+    }
+
+    async function updateStatus(ref, st) {
+      await fetch(`/api/grievances/${ref}/status`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({status: st, actor: 'NODAL_OFFICER', note: `Officer marked ${st}`})
+      });
+      alert(`Status updated to ${st}`);
+      loadOfficerQueue();
+      showOfficerDetail(ref);
+    }
+
+    // --- Admin Dashboard ---
+    async function loadAdminDashboard() {
+      // SLA Alerts
+      const rAlerts = await fetch('/api/sla/alerts');
+      const alerts = await rAlerts.json();
+      const aCont = document.getElementById('slaAlertsContainer');
+      aCont.innerHTML = alerts.length ? '' : '<div class="text-muted small py-2">No active SLA breach alerts.</div>';
+      alerts.forEach(a => {
+        aCont.innerHTML += `
+          <div class="list-group-item list-group-item-action py-2 text-danger small">
+            <div class="d-flex justify-content-between">
+              <strong>${a.grievance_id}</strong>
+              <span class="badge bg-danger">${(a.breach_probability*100).toFixed(0)}% Breach Risk</span>
+            </div>
+            <div>${a.reason}</div>
+          </div>
+        `;
+      });
+
+      // Duplicate Clusters
+      const rInc = await fetch('/api/incidents');
+      const incs = await rInc.json();
+      const iCont = document.getElementById('incidentsContainer');
+      iCont.innerHTML = incs.length ? '' : '<div class="text-muted small py-2">No duplicate clusters suggested.</div>';
+      incs.forEach(inc => {
+        let memHtml = '';
+        inc.members.forEach(m => {
+          memHtml += `<span class="badge bg-light text-dark border me-1">${m.grievance_id} (${m.status})</span>`;
+        });
+        iCont.innerHTML += `
+          <div class="border rounded p-2 mb-2 small bg-white">
+            <div class="d-flex justify-content-between">
+              <strong>Cluster #${inc.incident_id} (${inc.locality}, ${inc.taluka})</strong>
+              <span class="badge bg-primary">${inc.status}</span>
+            </div>
+            <div class="mt-1">${memHtml}</div>
+          </div>
+        `;
+      });
+
+      // Bottlenecks
+      const rBot = await fetch('/api/analytics/bottlenecks');
+      const bots = await rBot.json();
+      const bBody = document.getElementById('bottlenecksBody');
+      bBody.innerHTML = '';
+      bots.slice(0, 8).forEach(b => {
+        const badge = b.risk_level === 'CRITICAL' ? 'bg-danger' : (b.risk_level === 'ELEVATED' ? 'bg-warning text-dark' : 'bg-success');
+        bBody.innerHTML += `
+          <tr>
+            <td>${b.department_name}</td>
+            <td>${b.active_backlog}</td>
+            <td>${b.active_sla_alerts}</td>
+            <td><span class="badge ${badge}">${b.risk_level}</span></td>
+          </tr>
+        `;
+      });
+
+      // Audit logs
+      const rLogs = await fetch('/api/audit-logs');
+      const logs = await rLogs.json();
+      const aBody = document.getElementById('auditBody');
+      aBody.innerHTML = '';
+      logs.slice(0, 10).forEach(l => {
+        aBody.innerHTML += `
+          <tr>
+            <td>${l.timestamp.substring(11,19)}</td>
+            <td><code>${l.actor}</code></td>
+            <td>${l.tool_action}</td>
+            <td>${l.affected_record}</td>
+            <td>${l.summary}</td>
+          </tr>
+        `;
+      });
+    }
+
+    async function scanSLA() {
+      await fetch('/api/sla/scan', {method: 'POST'});
+      alert('SLA scan completed across all open grievances.');
+      loadAdminDashboard();
+    }
+  </script>
+</body>
+</html>
