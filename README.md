@@ -11,28 +11,50 @@
 ## 1. System Architecture
 
 ```mermaid
+
 flowchart TD
-    Citizen([Citizen Input\nMarathi / Hindi / English]) --> Intake[Intake Agent\nSarvam-105B / Deterministic Parser]
-    Intake --> Draft[Structured Draft\nLocation & Category Candidate]
-    Draft --> Safety[Two-Stage Safety Check\nA: multilingual regex  B: LLM classifier\nOR / fail-closed]
-    
-    Safety -- Sensitive Concept --> Masking[PII Masking & Confidential Lock]
-    Safety --> Retrieval[Case Memory RAG Engine\n800 Official History Cases\nHybrid: multilingual-e5-small cosine + BM25 (RRF)]
-    
-    Retrieval --> Agent[Guarded Triage Agent Loop\nmodel picks read-only tools, proposes\nonly with a Sarvam key]
-    Agent --> Confidence[Confidence Fusion\nLLM + Neighbors + Similarity]
-    Confidence --> Gate{Deterministic Policy Gate\nSole Source: Category Master}
-    
-    Gate -- RULE_01: SENSITIVE_HOLD --> SensitiveQueue[Restricted Officer Queue\nAutomated Closure Blocked]
-    Gate -- RULE_02-05: HUMAN_REVIEW --> OfficerDesk[Nodal Officer Triage Desk]
-    Gate -- RULE_06: AUTO_HANDLE --> Action[Action Agent\nWork Order & Notifications]
-    
-    Action --> WorkOrder[Mock Webhook Dispatch\nDepartment Assignee]
-    Action --> SimulatedNotif[Citizen Notifications\nStatus: SIMULATED]
-    
-    SensitiveQueue -.-> LangfuseTrace[(Langfuse Traces\nMasked PII)]
+    Citizen(["Citizen Input<br/>Marathi / Hindi / English"])
+    Intake["Intake Agent<br/>Sarvam-105B / Deterministic Parser"]
+    Draft["Structured Draft<br/>Location & Category Candidate"]
+    Safety["Two-Stage Safety Check<br/>A: Multilingual Regex<br/>B: LLM Classifier"]
+
+    Masking["PII Masking & Confidential Lock"]
+    Retrieval["Case Memory RAG Engine<br/>800 Official History Cases<br/>Multilingual E5 + BM25 RRF"]
+
+    Agent["Guarded Triage Agent Loop<br/>Read-only Tool Selection"]
+    Confidence["Confidence Fusion<br/>LLM + Neighbors + Similarity"]
+    Gate{"Deterministic Policy Gate<br/>Category Master"}
+
+    SensitiveQueue["Restricted Officer Queue<br/>Automated Closure Blocked"]
+    OfficerDesk["Nodal Officer Triage Desk"]
+    Action["Action Agent<br/>Work Orders & Notifications"]
+
+    WorkOrder["Mock Webhook Dispatch<br/>Department Assignment"]
+    SimulatedNotif["Citizen Notifications<br/>Status: SIMULATED"]
+
+    LangfuseTrace[("Langfuse Traces<br/>Masked PII")]
+
+    Citizen --> Intake
+    Intake --> Draft
+    Draft --> Safety
+
+    Safety --> Masking
+    Safety --> Retrieval
+    Retrieval --> Agent
+    Agent --> Confidence
+    Confidence --> Gate
+
+    Gate -->|RULE 01: SENSITIVE HOLD| SensitiveQueue
+    Gate -->|RULE 02-05: HUMAN REVIEW| OfficerDesk
+    Gate -->|RULE 06: AUTO HANDLE| Action
+
+    Action --> WorkOrder
+    Action --> SimulatedNotif
+
+    SensitiveQueue -.-> LangfuseTrace
     OfficerDesk -.-> LangfuseTrace
     Action -.-> LangfuseTrace
+
 ```
 
 ---
